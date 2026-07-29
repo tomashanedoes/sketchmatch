@@ -9,7 +9,9 @@ Een rustige, niet-competitieve PWA met tekenimpulsen voor op papier. De ervaring
 3. Volg de tekenimpuls in je eigen tempo.
 4. Kies een volgende impuls wanneer je klaar bent.
 
-De app bewaart alleen de laatstgekozen verzameling in de browser. Er zijn geen accounts, scores of online gegevens.
+Via Instellingen kunnen spelers een voorleesknop inschakelen, beweging verminderen en onderwerpen per verzameling kiezen.
+
+De app bewaart alleen de laatstgekozen verzameling en deze voorkeuren in de browser. Er zijn geen accounts, scores of online gegevens.
 
 ## Ontwikkelen
 

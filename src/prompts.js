@@ -18,6 +18,10 @@ export const prompts = [
     title: 'Een appel',
     invitation: 'Teken een ronde appel. Misschien geef je hem een steeltje en een blaadje.',
     shape: 'apple',
+    category: 'natuur',
+    difficulty: 'zacht',
+    description: 'Een eenvoudige ronde appel met een steeltje.',
+    active: true,
   },
   {
     id: 'sun',
@@ -25,6 +29,10 @@ export const prompts = [
     title: 'De zon',
     invitation: 'Begin met een cirkel en laat de zonnestralen rustig naar buiten groeien.',
     shape: 'sun',
+    category: 'lucht',
+    difficulty: 'zacht',
+    description: 'Een ronde zon met stralen.',
+    active: true,
   },
   {
     id: 'snail',
@@ -32,6 +40,10 @@ export const prompts = [
     title: 'Een slak',
     invitation: 'Teken eerst het huisje met zijn spiraal. Daarna mag de slak op pad.',
     shape: 'snail',
+    category: 'dieren',
+    difficulty: 'zacht',
+    description: 'Een slak met een rond huisje.',
+    active: true,
   },
   {
     id: 'leaf',
@@ -39,6 +51,10 @@ export const prompts = [
     title: 'Een blad',
     invitation: 'Kijk naar de vorm van een blad. Welke lijnen lopen er vanuit het hart?',
     shape: 'leaf',
+    category: 'natuur',
+    difficulty: 'zacht',
+    description: 'Een blad met een nerf in het midden.',
+    active: true,
   },
   {
     id: 'tree',
@@ -46,6 +62,10 @@ export const prompts = [
     title: 'Een jonge boom',
     invitation: 'Teken de stam als een rustige opgaande lijn. Laat de takken hun eigen richting zoeken.',
     shape: 'tree',
+    category: 'natuur',
+    difficulty: 'verdiepend',
+    description: 'Een jonge boom met stam en vertakkende takken.',
+    active: true,
   },
   {
     id: 'shell',
@@ -53,6 +73,10 @@ export const prompts = [
     title: 'Een schelp',
     invitation: 'Begin klein in het midden en laat een lijn langzaam naar buiten draaien.',
     shape: 'shell',
+    category: 'natuur',
+    difficulty: 'verdiepend',
+    description: 'Een schelp met een draaiende lijn.',
+    active: true,
   },
   {
     id: 'vase',
@@ -60,6 +84,10 @@ export const prompts = [
     title: 'Een vaas met tak',
     invitation: 'Zoek eerst de stille vorm van de vaas. Voeg daarna één tak toe.',
     shape: 'vase',
+    category: 'thuis',
+    difficulty: 'verdiepend',
+    description: 'Een stille vaas met een enkele tak.',
+    active: true,
   },
   {
     id: 'hills',
@@ -67,14 +95,34 @@ export const prompts = [
     title: 'Een landschap',
     invitation: 'Laat drie zachte heuvels achter elkaar verschijnen. Waar valt het licht?',
     shape: 'hills',
+    category: 'landschap',
+    difficulty: 'verdiepend',
+    description: 'Drie zachte heuvels in een landschap.',
+    active: true,
   },
 ];
 
-export function getPrompt(audience, excludedIds = []) {
+export function getCategories(audience) {
+  return [...new Set(prompts.filter((prompt) => prompt.audience === audience && prompt.active)
+    .map((prompt) => prompt.category))];
+}
+
+export function getPrompt(audience, excludedIds = [], categories = []) {
   const choices = prompts.filter(
-    (prompt) => prompt.audience === audience && !excludedIds.includes(prompt.id),
+    (prompt) =>
+      prompt.audience === audience &&
+      prompt.active &&
+      !excludedIds.includes(prompt.id) &&
+      (!categories.length || categories.includes(prompt.category)),
   );
-  const available = choices.length ? choices : prompts.filter((prompt) => prompt.audience === audience);
+  const available = choices.length
+    ? choices
+    : prompts.filter(
+      (prompt) =>
+        prompt.audience === audience &&
+        prompt.active &&
+        (!categories.length || categories.includes(prompt.category)),
+    );
 
   return available[Math.floor(Math.random() * available.length)];
 }
