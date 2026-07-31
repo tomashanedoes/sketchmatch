@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { APP_REVISION_LABEL } from '../../version';
 
 interface WelcomeProps {
   lastAudienceLabel: string | null;
@@ -49,6 +50,7 @@ export function Welcome({ lastAudienceLabel, onStart, onContinue, onSettings }: 
       <button className="text-button" type="button" onClick={onSettings}>
         Instellingen
       </button>
+      <p className="build-revision">{APP_REVISION_LABEL}</p>
     </section>
   );
 }
