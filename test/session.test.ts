@@ -10,8 +10,16 @@ import {
 } from '../src/features/game/session';
 
 test('returns categories for each intended audience', () => {
-  assert.deepEqual(getCategories('children').sort(), ['dieren', 'lucht', 'natuur']);
-  assert.deepEqual(getCategories('adults').sort(), ['landschap', 'natuur', 'thuis']);
+  assert.deepEqual(getCategories('children'), ['dieren', 'lucht', 'natuur', 'thuis', 'vorm', 'water']);
+  assert.deepEqual(getCategories('adults'), ['landschap', 'natuur', 'thuis', 'vorm', 'water']);
+});
+
+test('offers a broad prompt library for both audiences', () => {
+  const children = prompts.filter((prompt) => prompt.audience === 'children' && prompt.active);
+  const adults = prompts.filter((prompt) => prompt.audience === 'adults' && prompt.active);
+
+  assert.ok(children.length >= 20);
+  assert.ok(adults.length >= 20);
 });
 
 test('never returns an excluded prompt while alternatives exist', () => {

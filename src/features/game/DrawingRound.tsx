@@ -5,12 +5,53 @@ import type { Audience, Prompt } from '../../data/prompts/types';
 const icons: Record<string, string> = {
   apple: '●',
   sun: '☼',
+  moon: '☽',
   snail: '〰',
   leaf: '❧',
+  flower: '❀',
+  mushroom: '⋒',
+  acorn: ' compat',
   tree: '♧',
+  carrot: '∨',
+  berry: '∷',
+  cloud: '◠',
+  star: '✦',
+  rainbow: '⌒',
+  butterfly: '❧',
+  bird: '◠',
+  fish: '彡',
+  cat: '∩',
+  bee: '◌',
+  hedgehog: '⁕',
+  house: '⌂',
+  balloon: '◯',
+  boat: '⌬',
+  circle: '○',
+  spiral: '◌',
+  wave: '∿',
   shell: '◌',
   vase: '⌇',
   hills: '⌒',
+  fern: 'ʏ',
+  pinecone: ' compat',
+  seedling: 'ʏ',
+  stone: '◽',
+  feather: 'ﾉ',
+  nest: '◎',
+  path: '⟋',
+  horizon: '―',
+  mountain: '△',
+  field: 'ⅲ',
+  bridge: '⌒',
+  cup: '⋃',
+  candle: 'ㅣ',
+  window: '▦',
+  chair: 'ℎ',
+  bowl: '⋃',
+  ripple: '◎',
+  lemniscate: '∞',
+  hand: '҂',
+  fruit: '◕',
 };
 
 interface DrawingRoundProps {
@@ -76,11 +117,11 @@ export function DrawingRound({
       </header>
       <div className="prompt-card">
         <div
-          className={`prompt-art prompt-art--${prompt.shape}`}
+          className={`prompt-art prompt-art--${prompt.category}`}
           role="img"
           aria-label={prompt.description}
         >
-          <span className={`prompt-symbol prompt-symbol--${prompt.shape}`} aria-hidden="true">
+          <span className={`prompt-symbol prompt-symbol--${prompt.category}`} aria-hidden="true">
             {icons[prompt.shape] ?? '○'}
           </span>
         </div>
