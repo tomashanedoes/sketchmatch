@@ -47,9 +47,20 @@ De app is daarna bereikbaar op:
 - `http://<nas-ip>:8080`
 - of via Tailscale, bijvoorbeeld `http://ds920.tail2e09c9.ts.net:8080`
 
+Let op: zonder `:8080` open je DSM zelf, niet Tekenmoment.
+
+### Niet bereikbaar? Controleer dit in Portainer
+
+1. Stack/containerstatus is **running** (niet exited/unhealthy).
+2. Bij de container staat published port **`8080:80`**.
+3. Open precies: `http://ds920.tail2e09c9.ts.net:8080`
+4. In DSM: Control Panel → Security → Firewall — poort **8080/TCP** toestaan.
+5. Als 8080 al bezet is, wijzig de mapping naar bijvoorbeeld `"0.0.0.0:3080:80"` en open `:3080`.
+6. Bekijk **Logs** van de container; nginx moet zonder crash blijven draaien.
+
 ### Poort wijzigen in Portainer
 
-Bewerk de stack en pas de poortmapping aan, bijvoorbeeld `"9080:8080"`, en deploy opnieuw.
+Bewerk de stack en pas de poortmapping aan, bijvoorbeeld `"0.0.0.0:3080:80"`, en deploy opnieuw.
 
 ### HTTPS voor telefoon/PWA
 
