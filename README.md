@@ -69,9 +69,13 @@ Let op: zonder `:8080` open je DSM zelf, niet Tekenmoment.
 5. Als 8080 al bezet is, wijzig de mapping naar bijvoorbeeld `"0.0.0.0:3080:80"` en open `:3080`.
 6. Bekijk **Logs** van de container; nginx moet zonder crash blijven draaien.
 
-### Poort wijzigen in Portainer
+### Na een update zie je nog oude opdrachten?
 
-Bewerk de stack en pas de poortmapping aan, bijvoorbeeld `"0.0.0.0:3080:80"`, en deploy opnieuw.
+1. Controleer in Portainer dat de stack opnieuw is **gebouwd** (niet alleen gepulld).
+2. Open de app opnieuw en ververs hard:
+   - iPhone Safari: tabblad sluiten, opnieuw openen
+   - Android Chrome: sitegegevens wissen voor de app-URL, of hard refresh
+3. De service worker haalt daarna de nieuwe opdrachtenbibliotheek op.
 
 ### HTTPS voor telefoon/PWA
 

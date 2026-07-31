@@ -5,12 +5,21 @@ const SETTINGS_KEY = 'tekenmoment-settings';
 const AUDIENCE_KEY = 'tekenmoment-audience';
 const FAVORITE_KEY = 'tekenmoment-favorite';
 
+/** Bump when new default categories are added so existing installs unlock them. */
+export const PROMPT_CATALOG_VERSION = 3;
+
+const LEGACY_DEFAULT_CATEGORIES: Record<Audience, string[]> = {
+  children: ['dieren', 'lucht', 'natuur'],
+  adults: ['landschap', 'natuur', 'thuis'],
+};
+
 export function createDefaultSettings(): AppSettings {
   return {
     readAloud: false,
     soundEnabled: false,
     reducedAnimation: false,
     timerMinutes: 0,
+    catalogVersion: PROMPT_CATALOG_VERSION,
     categories: {
       children: getCategories('children'),
       adults: getCategories('adults'),
@@ -18,30 +27,65 @@ export function createDefaultSettings(): AppSettings {
   };
 }
 
+function resolveCategories(
+  audience: Audience,
+  stored: string[] | undefined,
+  defaults: string[],
+  catalogVersion: number | undefined,
+): string[] {
+  if (!stored?.length) return defaults;
+
+  const legacy = LEGACY_DEFAULT_CATEGORIES[audience];
+  const matchesLegacyDefault =
+    stored.length === legacy.length && legacy.every((category) => stored.includes(category));
+
+  if (matchesLegacyDefault || !catalogVersion || catalogVersion < PROMPT_CATALOG_VERSION) {
+    return [...new Set([...stored, ...defaults])];
+  }
+
+  return stored.filter((category) => defaults.includes(category));
+}
+
 export function loadSettings(): AppSettings {
   const defaults = createDefaultSettings();
   try {
-    const stored = JSON.parse(localStorage.getItem(SETTINGS_KEY) ?? 'null') as Partial<AppSettings> | null;
+    const stored = JSON.parse(localStorage.getItem(SETTINGS_KEY) ?? 'null') as
+      | (Partial<AppSettings> & { catalogVersion?: number })
+      | null;
     if (!stored) return defaults;
-    return {
+
+    const next: AppSettings = {
       ...defaults,
       ...stored,
+      catalogVersion: PROMPT_CATALOG_VERSION,
       categories: {
-        children: stored.categories?.children?.length
-          ? stored.categories.children
-          : defaults.categories.children,
-        adults: stored.categories?.adults?.length
-          ? stored.categories.adults
-          : defaults.categories.adults,
+        children: resolveCategories(
+          'children',
+          stored.categories?.children,
+          defaults.categories.children,
+          stored.catalogVersion,
+        ),
+        adults: resolveCategories(
+          'adults',
+          stored.categories?.adults,
+          defaults.categories.adults,
+          stored.catalogVersion,
+        ),
       },
     };
+
+    saveSettings(next);
+    return next;
   } catch {
     return defaults;
   }
 }
 
 export function saveSettings(settings: AppSettings): void {
-  localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
+  localStorage.setItem(
+    SETTINGS_KEY,
+    JSON.stringify({ ...settings, catalogVersion: PROMPT_CATALOG_VERSION }),
+  );
   document.documentElement.classList.toggle('reduce-animation', settings.reducedAnimation);
 }
 

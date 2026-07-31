@@ -26,6 +26,8 @@ export interface AppSettings {
   reducedAnimation: boolean;
   /** Soft adult timer in minutes; 0 means free play. */
   timerMinutes: number;
+  /** Used to unlock newly added prompt categories on existing installs. */
+  catalogVersion: number;
   categories: Record<Audience, string[]>;
 }
 
