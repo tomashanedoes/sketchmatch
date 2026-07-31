@@ -1,4 +1,6 @@
-export const audiences = {
+import type { Audience, AudienceInfo, Prompt } from './types';
+
+export const audiences: Record<Audience, AudienceInfo> = {
   children: {
     label: 'Kinderen',
     eyebrow: 'Voor kleine handen',
@@ -11,7 +13,7 @@ export const audiences = {
   },
 };
 
-export const prompts = [
+export const prompts: Prompt[] = [
   {
     id: 'apple',
     audience: 'children',
@@ -102,27 +104,48 @@ export const prompts = [
   },
 ];
 
-export function getCategories(audience) {
-  return [...new Set(prompts.filter((prompt) => prompt.audience === audience && prompt.active)
-    .map((prompt) => prompt.category))];
+export function getCategories(audience: Audience): string[] {
+  return [
+    ...new Set(
+      prompts
+        .filter((prompt) => prompt.audience === audience && prompt.active)
+        .map((prompt) => prompt.category),
+    ),
+  ];
 }
 
-export function getPrompt(audience, excludedIds = [], categories = []) {
-  const choices = prompts.filter(
+export function getPromptById(id: string): Prompt | undefined {
+  return prompts.find((prompt) => prompt.id === id);
+}
+
+export function filterPrompts(
+  audience: Audience,
+  excludedIds: string[] = [],
+  categories: string[] = [],
+): Prompt[] {
+  const filtered = prompts.filter(
     (prompt) =>
       prompt.audience === audience &&
       prompt.active &&
       !excludedIds.includes(prompt.id) &&
       (!categories.length || categories.includes(prompt.category)),
   );
-  const available = choices.length
-    ? choices
-    : prompts.filter(
-      (prompt) =>
-        prompt.audience === audience &&
-        prompt.active &&
-        (!categories.length || categories.includes(prompt.category)),
-    );
 
+  if (filtered.length) return filtered;
+
+  return prompts.filter(
+    (prompt) =>
+      prompt.audience === audience &&
+      prompt.active &&
+      (!categories.length || categories.includes(prompt.category)),
+  );
+}
+
+export function getPrompt(
+  audience: Audience,
+  excludedIds: string[] = [],
+  categories: string[] = [],
+): Prompt {
+  const available = filterPrompts(audience, excludedIds, categories);
   return available[Math.floor(Math.random() * available.length)];
 }

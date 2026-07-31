@@ -60,6 +60,9 @@ h1:focus { outline: 0; }
   transition: transform .2s ease, box-shadow .2s ease;
 }
 .primary-button:hover { box-shadow: 0 2px 0 #25463f; transform: translateY(2px); }
+.welcome .primary-button,
+.welcome .secondary-button { display: inline-block; }
+.welcome .secondary-button { margin-top: 12px; }
 .quiet-note { margin: 25px 0 0; color: #877b6e; font-size: .75rem; }
 
 .paper-scribble {
@@ -135,6 +138,59 @@ legend { padding: 0 5px; font-family: Georgia, serif; font-size: 1.2rem; }
 .category-list { display: flex; flex-wrap: wrap; gap: 9px; }
 .category-option { display: flex; align-items: center; gap: 7px; padding: 7px 9px; border-radius: 99px; background: #f3e8d8; color: #4e453b; font-size: .75rem; text-transform: capitalize; }
 .settings-page .primary-button { justify-self: start; }
+.timer-chip {
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #efe3d2;
+  color: #496d5b !important;
+  font-variant-numeric: tabular-nums;
+}
+.setup-intro { margin-top: 18px; text-align: center; }
+.timer-options { display: grid; gap: 12px; margin: 28px 0 24px; }
+.timer-option {
+  display: grid;
+  gap: 4px;
+  padding: 16px 18px;
+  border: 1px solid rgba(40, 35, 30, .14);
+  border-radius: 8px;
+  background: #fffaf2;
+  cursor: pointer;
+}
+.timer-option input { position: absolute; opacity: 0; pointer-events: none; }
+.timer-option strong { font-family: Georgia, serif; font-size: 1.2rem; font-weight: 500; }
+.timer-option span { color: #665c51; font-size: .78rem; line-height: 1.5; }
+.timer-option.is-selected { border-color: #365b53; box-shadow: inset 0 0 0 1px #365b53; }
+.session-summary {
+  display: grid;
+  gap: 10px;
+  max-width: 360px;
+  margin: 0 auto 8px;
+  padding: 0;
+  list-style: none;
+}
+.session-summary li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(40, 35, 30, .12);
+  color: #665c51;
+  font-size: .85rem;
+}
+.session-summary strong {
+  color: #28231e;
+  font-family: Georgia, serif;
+  font-weight: 500;
+}
+select {
+  min-width: 8rem;
+  padding: 8px 10px;
+  border: 1px solid rgba(40, 35, 30, .18);
+  border-radius: 8px;
+  background: #fffaf2;
+  color: inherit;
+  font: inherit;
+}
 
 .reduce-animation *, .reduce-animation *::before, .reduce-animation *::after { transition: none !important; }
 

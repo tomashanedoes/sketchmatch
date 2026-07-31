@@ -1,17 +1,17 @@
 # Tekenmoment
 
-Een rustige, niet-competitieve PWA met tekenimpulsen voor op papier. De ervaring is vormgegeven met de vrijeschoolgedachte in gedachten: aandacht voor eigen tempo, verbeelding en het maakproces, zonder scores, timers of vergelijkingen.
+Een rustige, niet-competitieve PWA met tekenimpulsen voor op papier. De ervaring is vormgegeven met de vrijeschoolgedachte in gedachten: aandacht voor eigen tempo, verbeelding en het maakproces, zonder scores of vergelijkingen.
 
 ## Gebruik
 
 1. Kies een verzameling voor kinderen of volwassenen.
-2. Pak papier en potlood.
+2. Pak papier en een potlood.
 3. Volg de tekenimpuls in je eigen tempo.
 4. Kies een volgende impuls wanneer je klaar bent.
 
-Via Instellingen kunnen spelers een voorleesknop inschakelen, beweging verminderen en onderwerpen per verzameling kiezen.
+Voor volwassenen is een optionele soft-timer beschikbaar (vrij spelen, 10 of 20 minuten). Die timer is een zachte herinnering, geen race. Aan het eind zie je alleen een terugblik: afgeronde en overgeslagen impulsen, geen score.
 
-De app bewaart alleen de laatstgekozen verzameling en deze voorkeuren in de browser. Er zijn geen accounts, scores of online gegevens.
+Via Instellingen kun je voorlezen, zachte geluiden, rustige beweging, standaard soft-timer en onderwerpen per verzameling instellen. De laatst gekozen verzameling en een favoriete impuls blijven lokaal bewaard.
 
 ## Ontwikkelen
 
@@ -20,13 +20,14 @@ npm install
 npm run dev
 ```
 
-Maak een productieversie met:
+Tests en productieversie:
 
 ```bash
+npm test
 npm run build
 ```
 
-De app bevat een webmanifest en service worker. Installeer haar via de browser nadat de app eenmaal online is geopend; de kernbestanden worden vervolgens lokaal gecachet.
+De TypeScript React-app gebruikt schermen voor welkom, moduskeuze, volwassenen-setup, tekenronde, terugblik en instellingen. Manifest en service worker maken de app offline en installeerbaar.
 
 ## Installeren via Portainer
 

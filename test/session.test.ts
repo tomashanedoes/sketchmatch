@@ -1,13 +1,13 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { getCategories, getPrompt, prompts } from '../src/data/prompts/prompts.ts';
+import { getCategories, getPrompt, prompts } from '../src/data/prompts/prompts';
 import {
   completePrompt,
   createSessionStats,
   isTimerFinished,
   remainingTimerSeconds,
   skipPrompt,
-} from '../src/features/game/session.ts';
+} from '../src/features/game/session';
 
 test('returns categories for each intended audience', () => {
   assert.deepEqual(getCategories('children').sort(), ['dieren', 'lucht', 'natuur']);

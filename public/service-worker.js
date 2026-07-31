@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tekenmoment-v1';
+const CACHE_NAME = 'tekenmoment-v2';
 const APP_SHELL = [
   '/',
   '/index.html',
