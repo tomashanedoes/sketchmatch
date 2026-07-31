@@ -31,8 +31,11 @@ De TypeScript React-app gebruikt schermen voor welkom, moduskeuze, volwassenen-s
 
 ## Installeren via Portainer
 
+Belangrijk: de app staat op branch **`cursor/vrijeschool-tekenapp-bd49`**.
+Branch **`main`** bevat nog niet de app. Zet in Portainer dus niet `main`.
+
 1. Open Portainer op je NAS.
-2. Ga naar **Stacks** → **Add stack**.
+2. Ga naar **Stacks** → stack `tekenmoment` (of **Add stack** als die nog niet bestaat).
 3. Kies **Repository**.
 4. Vul in:
    - **Name:** `tekenmoment`
@@ -43,15 +46,20 @@ De TypeScript React-app gebruikt schermen voor welkom, moduskeuze, volwassenen-s
 6. Laat **Re-pull image** / **Pull latest image** uitstaan. Er bestaat geen image op Docker Hub; de app wordt lokaal gebouwd.
 7. Klik **Deploy the stack**.
 
+Na een geslaagde update zie je op het startscherm onderaan:
+`versie 3 · 52 tekenimpulsen`
+
 ### Stack bijwerken na een code-update
 
 1. Open de stack `tekenmoment` in Portainer.
-2. Kies **Pull and redeploy** alleen als je Git opnieuw wilt ophalen.
-3. Zet **Re-pull image** uit.
-4. Zet **Re-build image** / build aan als die optie er is.
-5. Deploy opnieuw.
+2. Controleer dat **Reference** nog steeds `refs/heads/cursor/vrijeschool-tekenapp-bd49` is.
+3. Haal Git opnieuw op / update de stack.
+4. Zet **Re-pull image** uit.
+5. Zet **Re-build image** / build aan.
+6. Deploy opnieuw.
+7. Hard refresh de site, of wis sitegegevens voor `https://sketchmatch.tail2e09c9.ts.net/`.
 
-Als Portainer blijft proberen `tekenmoment` van Docker Hub te pullen: bewerk de stack, haal Git opnieuw op, en deploy met rebuild in plaats van image-pull.
+Werkt updaten niet: verwijder de stack en maak hem opnieuw aan met bovenstaande repository-instellingen.
 
 De app is daarna bereikbaar op:
 
