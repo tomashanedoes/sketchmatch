@@ -1,0 +1,11 @@
+services:
+  tekenmoment:
+    # Prebuilt image from GitHub Actions — Portainer only needs to pull.
+    image: ghcr.io/tomashanedoes/sketchmatch:latest
+    pull_policy: always
+    container_name: tekenmoment
+    restart: unless-stopped
+    ports:
+      - "0.0.0.0:8080:80"
+    labels:
+      - com.portainer.stack=tekenmoment

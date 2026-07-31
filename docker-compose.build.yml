@@ -1,0 +1,13 @@
+services:
+  tekenmoment:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: tekenmoment:local
+    pull_policy: build
+    container_name: tekenmoment
+    restart: unless-stopped
+    ports:
+      - "0.0.0.0:8080:80"
+    labels:
+      - com.portainer.stack=tekenmoment
