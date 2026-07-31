@@ -40,7 +40,18 @@ De TypeScript React-app gebruikt schermen voor welkom, moduskeuze, volwassenen-s
    - **Reference:** `refs/heads/cursor/vrijeschool-tekenapp-bd49`
    - **Compose path:** `docker-compose.yml`
 5. Zet **Build method** / image build aan als Portainer dat vraagt (de stack bouwt vanuit de `Dockerfile`).
-6. Klik **Deploy the stack**.
+6. Laat **Re-pull image** / **Pull latest image** uitstaan. Er bestaat geen image op Docker Hub; de app wordt lokaal gebouwd.
+7. Klik **Deploy the stack**.
+
+### Stack bijwerken na een code-update
+
+1. Open de stack `tekenmoment` in Portainer.
+2. Kies **Pull and redeploy** alleen als je Git opnieuw wilt ophalen.
+3. Zet **Re-pull image** uit.
+4. Zet **Re-build image** / build aan als die optie er is.
+5. Deploy opnieuw.
+
+Als Portainer blijft proberen `tekenmoment` van Docker Hub te pullen: bewerk de stack, haal Git opnieuw op, en deploy met rebuild in plaats van image-pull.
 
 De app is daarna bereikbaar op:
 

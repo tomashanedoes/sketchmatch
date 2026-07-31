@@ -3,7 +3,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: tekenmoment:latest
+    # Local image name only — not published to Docker Hub
+    image: tekenmoment:local
+    pull_policy: build
     container_name: tekenmoment
     restart: unless-stopped
     ports:
