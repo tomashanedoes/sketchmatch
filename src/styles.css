@@ -64,6 +64,12 @@ h1:focus { outline: 0; }
 .welcome .secondary-button { display: inline-block; }
 .welcome .secondary-button { margin-top: 12px; }
 .quiet-note { margin: 25px 0 0; color: #877b6e; font-size: .75rem; }
+.build-revision {
+  margin: 28px 0 0;
+  color: #a09486;
+  font-size: .68rem;
+  letter-spacing: .04em;
+}
 
 .paper-scribble {
   display: flex;
