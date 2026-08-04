@@ -66,9 +66,9 @@ export function DrawingRound({
           role="img"
           aria-label={prompt.description}
         >
-          <PromptIllustration shape={prompt.shape} />
+          <PromptIllustration shape={prompt.shape} audience={audience} />
         </div>
-        {!isChild ? <p className="eyebrow">Vormhint</p> : null}
+        {!isChild ? <p className="eyebrow">Sfeerhint</p> : null}
         <h1 id="prompt-title" tabIndex={-1} ref={headingRef}>
           {prompt.title}
         </h1>
@@ -76,7 +76,7 @@ export function DrawingRound({
         <p className="inspire-note">
           {isChild
             ? 'Dit is een sfeer, geen voorbeeld om precies na te tekenen.'
-            : 'Een zachte aanzet. Jouw tekening mag helemaal anders worden.'}
+            : 'Geen voorbeeld om na te tekenen — alleen sfeer en richting. Jouw hand bepaalt de vorm.'}
         </p>
       </div>
       <div className="drawing-actions">
