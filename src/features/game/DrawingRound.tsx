@@ -1,66 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { audiences } from '../../data/prompts/prompts';
 import type { Audience, Prompt } from '../../data/prompts/types';
-
-const icons: Record<string, string> = {
-  apple: '●',
-  sun: '☼',
-  moon: '☽',
-  snail: '〰',
-  leaf: '❧',
-  flower: '❀',
-  mushroom: '⋒',
-  acorn: '◗',
-  tree: '♧',
-  carrot: '∨',
-  berry: '∷',
-  cloud: '◠',
-  star: '✦',
-  rainbow: '⌒',
-  butterfly: '❧',
-  bird: '◠',
-  fish: '彡',
-  cat: '∩',
-  bee: '◌',
-  hedgehog: '⁕',
-  house: '⌂',
-  balloon: '◯',
-  boat: '⌬',
-  circle: '○',
-  spiral: '◌',
-  wave: '∿',
-  shell: '◌',
-  vase: '⌇',
-  hills: '⌒',
-  fern: 'ʏ',
-  pinecone: '❦',
-  seedling: 'ʏ',
-  stone: '◽',
-  feather: 'ﾉ',
-  nest: '◎',
-  path: '⟋',
-  horizon: '―',
-  mountain: '△',
-  field: 'ⅲ',
-  bridge: '⌒',
-  cup: '⋃',
-  candle: 'ㅣ',
-  window: '▦',
-  chair: 'ℎ',
-  bowl: '⋃',
-  ripple: '◎',
-  lemniscate: '∞',
-  hand: '҂',
-  fruit: '◕',
-  lantern: '◊',
-  wreath: '◎',
-  egg: '◯',
-  snowflake: '❋',
-  tulip: 'ʏ',
-  pumpkin: '●',
-  nestegg: '◎',
-  harvest: 'ⅲ',
-};
+import { PromptIllustration } from './PromptIllustration';
 
 interface DrawingRoundProps {
   audience: Audience;
@@ -125,9 +66,7 @@ export function DrawingRound({
           role="img"
           aria-label={prompt.description}
         >
-          <span className={`prompt-symbol prompt-symbol--${prompt.category}`} aria-hidden="true">
-            {icons[prompt.shape] ?? '○'}
-          </span>
+          <PromptIllustration shape={prompt.shape} />
         </div>
         {!isChild ? <p className="eyebrow">Tekenimpuls</p> : null}
         <h1 id="prompt-title" tabIndex={-1} ref={headingRef}>
