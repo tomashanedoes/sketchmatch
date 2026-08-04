@@ -41,8 +41,8 @@ Gebruik daarom de standaard compose die **lokaal bouwt** vanaf Git.
 4. Zet **Re-build image** aan.
 5. Deploy.
 
-Na een geslaagde update zie je onderaan het startscherm:
-`versie 4 · 52 tekenimpulsen`
+Na een geslaagde update zie je bovenaan het startscherm een groene badge:
+`Versie 5 · 52 tekenimpulsen`
 
 Zie je dat niet: wis sitegegevens voor `https://sketchmatch.tail2e09c9.ts.net/` en open opnieuw.
 

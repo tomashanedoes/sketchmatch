@@ -24,6 +24,17 @@ button:focus-visible { outline: 3px solid #365b53; outline-offset: 4px; }
 }
 
 .welcome { text-align: center; }
+.version-banner {
+  display: inline-block;
+  margin: 0 0 18px;
+  padding: 8px 14px;
+  border: 1px solid rgba(54, 91, 83, .35);
+  border-radius: 999px;
+  background: #e7efe9;
+  color: #25463f;
+  font-size: .78rem;
+  letter-spacing: .04em;
+}
 .eyebrow {
   margin: 0 0 14px;
   color: #8b5542;
@@ -64,12 +75,6 @@ h1:focus { outline: 0; }
 .welcome .secondary-button { display: inline-block; }
 .welcome .secondary-button { margin-top: 12px; }
 .quiet-note { margin: 25px 0 0; color: #877b6e; font-size: .75rem; }
-.build-revision {
-  margin: 28px 0 0;
-  color: #a09486;
-  font-size: .68rem;
-  letter-spacing: .04em;
-}
 
 .paper-scribble {
   display: flex;

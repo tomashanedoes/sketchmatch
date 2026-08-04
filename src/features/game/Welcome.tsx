@@ -17,6 +17,7 @@ export function Welcome({ lastAudienceLabel, onStart, onContinue, onSettings }: 
 
   return (
     <section className="welcome" aria-labelledby="welcome-title">
+      <p className="version-banner">{APP_REVISION_LABEL}</p>
       <p className="eyebrow">Een klein tekenmoment</p>
       <h1 id="welcome-title" tabIndex={-1} ref={headingRef}>
         Van kijken
@@ -50,7 +51,6 @@ export function Welcome({ lastAudienceLabel, onStart, onContinue, onSettings }: 
       <button className="text-button" type="button" onClick={onSettings}>
         Instellingen
       </button>
-      <p className="build-revision">{APP_REVISION_LABEL}</p>
     </section>
   );
 }
