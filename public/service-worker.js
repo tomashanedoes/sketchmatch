@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tekenmoment-v7';
+const CACHE_NAME = 'tekenmoment-v8';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
