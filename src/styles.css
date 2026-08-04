@@ -123,9 +123,13 @@ h1:focus { outline: 0; }
 .prompt-card { padding: 32px 24px 28px; border-radius: 10px; background: #fffaf2; box-shadow: 0 14px 44px rgba(81, 63, 42, .09); text-align: center; }
 .prompt-art { display: grid; width: min(165px, 43vw); aspect-ratio: 1; margin: 0 auto 21px; border-radius: 50% 42% 48% 42%; place-items: center; background: #efcf9b; }
 .prompt-illustration {
-  width: 78%;
-  height: 78%;
+  width: 86%;
+  height: 86%;
   display: block;
+  object-fit: contain;
+}
+.prompt-illustration--raster {
+  border-radius: 46%;
 }
 .prompt-art--natuur, .prompt-art--landschap { background: #d2dfcc; }
 .prompt-art--thuis, .prompt-art--vorm { background: #d8e2db; }
