@@ -1,8 +1,10 @@
 services:
   tekenmoment:
-    # Prebuilt image from GitHub Actions — Portainer only needs to pull.
-    image: ghcr.io/tomashanedoes/sketchmatch:latest
-    pull_policy: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: tekenmoment:local
+    pull_policy: build
     container_name: tekenmoment
     restart: unless-stopped
     ports:

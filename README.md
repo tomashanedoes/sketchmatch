@@ -27,48 +27,32 @@ npm test
 npm run build
 ```
 
-De TypeScript React-app gebruikt schermen voor welkom, moduskeuze, volwassenen-setup, tekenronde, terugblik en instellingen. Manifest en service worker maken de app offline en installeerbaar.
-
 ## Installeren via Portainer
 
-De container-image wordt automatisch gebouwd door GitHub Actions naar:
+Omdat deze GitHub-repo **privé** is, kan Portainer de GHCR-image niet zomaar pullen.
+Gebruik daarom de standaard compose die **lokaal bouwt** vanaf Git.
 
-`ghcr.io/tomashanedoes/sketchmatch:latest`
-
-### Eenmalig instellen
-
-1. Open Portainer → **Stacks** → stack `tekenmoment` (of nieuw).
-2. Kies **Repository**.
-3. Vul in:
-   - **Name:** `tekenmoment`
+1. Open Portainer → **Stacks** → `tekenmoment`.
+2. Repository-instellingen:
    - **Repository URL:** `https://github.com/tomashanedoes/sketchmatch`
-   - **Reference:** `refs/heads/main` (of tijdelijk `refs/heads/cursor/vrijeschool-tekenapp-bd49`)
+   - **Reference:** `refs/heads/main`
    - **Compose path:** `docker-compose.yml`
-4. Zet **Re-pull image** / **Pull latest image** aan.
+3. Zet **Re-pull image** uit.
+4. Zet **Re-build image** aan.
 5. Deploy.
 
-Na een geslaagde update zie je op het startscherm onderaan:
-`versie 3 · 52 tekenimpulsen`
+Na een geslaagde update zie je onderaan het startscherm:
+`versie 4 · 52 tekenimpulsen`
 
-### Later bijwerken
+Zie je dat niet: wis sitegegevens voor `https://sketchmatch.tail2e09c9.ts.net/` en open opnieuw.
 
-1. Open de stack.
-2. **Pull and redeploy** met **Re-pull image** aan.
-3. Hard refresh de site, of wis sitegegevens voor `https://sketchmatch.tail2e09c9.ts.net/`.
+### Optioneel: GHCR-image
 
-Eerste keer GHCR: als de image privé is, log Portainer in op `ghcr.io` met een GitHub Personal Access Token (read:packages), of maak het package public onder GitHub → Packages.
+Alleen als het package public is, of Portainer is ingelogd op `ghcr.io`:
 
-### Lokaal bouwen op de NAS (optioneel)
+- Compose path: `docker-compose.ghcr.yml`
+- **Re-pull image** aan
 
-```bash
-docker compose -f docker-compose.build.yml up -d --build
-```
+## HTTPS
 
-De app is bereikbaar op:
-
-- `http://<nas-ip>:8080`
-- of via Tailscale / reverse proxy, bijvoorbeeld `https://sketchmatch.tail2e09c9.ts.net/`
-
-### HTTPS voor telefoon/PWA
-
-Voor installeren op het beginscherm en offlinegebruik heb je HTTPS nodig. Zet een reverse proxy voor de container naar `http://127.0.0.1:8080`.
+Zet een reverse proxy naar `http://127.0.0.1:8080`, bijvoorbeeld `https://sketchmatch.tail2e09c9.ts.net/`.

@@ -1,10 +1,8 @@
 services:
   tekenmoment:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: tekenmoment:local
-    pull_policy: build
+    # Requires a public GHCR package or Portainer login to ghcr.io
+    image: ghcr.io/tomashanedoes/sketchmatch:latest
+    pull_policy: always
     container_name: tekenmoment
     restart: unless-stopped
     ports:
