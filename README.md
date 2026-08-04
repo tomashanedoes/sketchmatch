@@ -42,7 +42,7 @@ Gebruik daarom de standaard compose die **lokaal bouwt** vanaf Git.
 5. Deploy.
 
 Na een geslaagde update zie je bovenaan het startscherm een groene badge:
-`Versie 10 · echte illustraties`
+`Versie 11 · sfeerhints`
 
 Als je die badge niet ziet: in Chrome → site-instellingen voor de URL → **Gegevens wissen**,
 of open een privévenster. Een oude service worker kan anders de vorige app blijven tonen.

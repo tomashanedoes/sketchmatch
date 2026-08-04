@@ -68,11 +68,16 @@ export function DrawingRound({
         >
           <PromptIllustration shape={prompt.shape} />
         </div>
-        {!isChild ? <p className="eyebrow">Tekenimpuls</p> : null}
+        {!isChild ? <p className="eyebrow">Vormhint</p> : null}
         <h1 id="prompt-title" tabIndex={-1} ref={headingRef}>
           {prompt.title}
         </h1>
         <p className="invitation">{prompt.invitation}</p>
+        <p className="inspire-note">
+          {isChild
+            ? 'Dit is een sfeer, geen voorbeeld om precies na te tekenen.'
+            : 'Een zachte aanzet. Jouw tekening mag helemaal anders worden.'}
+        </p>
       </div>
       <div className="drawing-actions">
         <button className="secondary-button" type="button" onClick={onSkip}>
