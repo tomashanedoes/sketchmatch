@@ -148,6 +148,14 @@ h1:focus { outline: 0; }
   line-height: 1.5;
 }
 .drawing-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 26px; }
+.drawing-page:not(.drawing-page--children) .prompt-art {
+  background: #f0e6d4;
+  opacity: 0.92;
+}
+.drawing-page:not(.drawing-page--children) .prompt-illustration--raster {
+  border-radius: 42% 48% 46% 50%;
+  filter: saturate(0.88) contrast(0.96);
+}
 .drawing-page--children .prompt-art {
   width: min(210px, 58vw);
   margin-bottom: 16px;

@@ -1,3 +1,5 @@
+import type { Audience } from '../../data/prompts/types';
+
 const rasterShapes = [
   'acorn',
   'apple',
@@ -58,10 +60,39 @@ const rasterShapes = [
   'wreath',
 ] as const;
 
+/** Adult-only soft variants for shapes that would otherwise look too finished to copy. */
+const adultAtmosphereShapes = new Set([
+  'bowl',
+  'candle',
+  'egg',
+  'lantern',
+  'snowflake',
+  'spiral',
+  'tree',
+  'wave',
+  'wreath',
+]);
+
 const rasterSet = new Set<string>(rasterShapes);
 
-export function PromptIllustration({ shape }: { shape: string }) {
-  const src = rasterSet.has(shape) ? `/illustrations/${shape}.png` : '/illustrations/circle.png';
+function illustrationSrc(shape: string, audience?: Audience): string {
+  if (audience === 'adults' && adultAtmosphereShapes.has(shape)) {
+    return `/illustrations/${shape}-adult.png`;
+  }
+  if (rasterSet.has(shape)) {
+    return `/illustrations/${shape}.png`;
+  }
+  return '/illustrations/circle.png';
+}
+
+export function PromptIllustration({
+  shape,
+  audience,
+}: {
+  shape: string;
+  audience?: Audience;
+}) {
+  const src = illustrationSrc(shape, audience);
 
   return (
     <img

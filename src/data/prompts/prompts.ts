@@ -9,7 +9,7 @@ export const audiences: Record<Audience, AudienceInfo> = {
   adults: {
     label: 'Volwassenen',
     eyebrow: 'Voor een eigen moment',
-    description: 'Een rustige aanleiding om te kijken en te tekenen.',
+    description: 'Sfeerhints die je eigen hand en verbeelding aan het werk zetten.',
   },
 };
 
