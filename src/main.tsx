@@ -15,8 +15,18 @@ createRoot(root).render(
   </StrictMode>,
 );
 
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    void navigator.serviceWorker.register('/service-worker.js', { updateViaCache: 'none' });
-  });
+async function refreshServiceWorker() {
+  if (!('serviceWorker' in navigator)) return;
+
+  const keys = await caches.keys();
+  await Promise.all(keys.map((key) => caches.delete(key)));
+
+  const registrations = await navigator.serviceWorker.getRegistrations();
+  await Promise.all(registrations.map((registration) => registration.unregister()));
+
+  await navigator.serviceWorker.register('/service-worker.js', { updateViaCache: 'none' });
 }
+
+window.addEventListener('load', () => {
+  void refreshServiceWorker();
+});

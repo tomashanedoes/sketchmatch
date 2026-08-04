@@ -42,9 +42,10 @@ Gebruik daarom de standaard compose die **lokaal bouwt** vanaf Git.
 5. Deploy.
 
 Na een geslaagde update zie je bovenaan het startscherm een groene badge:
-`Versie 5 · 52 tekenimpulsen`
+`Versie 6 · 52 tekenimpulsen`
 
-Zie je dat niet: wis sitegegevens voor `https://sketchmatch.tail2e09c9.ts.net/` en open opnieuw.
+Als je die badge niet ziet: in Chrome → site-instellingen voor de URL → **Gegevens wissen**,
+of open een privévenster. Een oude service worker kan anders de vorige app blijven tonen.
 
 ### Optioneel: GHCR-image
 
