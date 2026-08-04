@@ -1,4 +1,4 @@
-import { getPrompt, getPromptById } from '../../data/prompts/prompts';
+import { getPrompt } from '../../data/prompts/prompts';
 import type { Audience, Prompt, SessionStats } from '../../data/prompts/types';
 
 export function createSessionStats(timerMinutes = 0): SessionStats {
@@ -34,10 +34,6 @@ export function isTimerFinished(stats: SessionStats, now = Date.now()): boolean 
 export function remainingTimerSeconds(stats: SessionStats, now = Date.now()): number | null {
   if (stats.timerEndsAt === null) return null;
   return Math.max(0, Math.ceil((stats.timerEndsAt - now) / 1000));
-}
-
-export function repeatPrompt(id: string): Prompt | undefined {
-  return getPromptById(id);
 }
 
 export function formatDuration(ms: number): string {

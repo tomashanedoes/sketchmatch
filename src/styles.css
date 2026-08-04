@@ -138,6 +138,38 @@ h1:focus { outline: 0; }
 .prompt-card h1 { font-size: clamp(2.3rem, 7vw, 4rem); }
 .invitation { max-width: 470px; margin: 19px auto 0; color: #665c51; font-size: .91rem; line-height: 1.7; }
 .drawing-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 26px; }
+.drawing-page--children .prompt-art {
+  width: min(210px, 58vw);
+  margin-bottom: 16px;
+}
+.drawing-page--children .prompt-symbol {
+  font-size: clamp(5.5rem, 20vw, 9rem);
+}
+.drawing-page--children .prompt-card h1 {
+  font-size: clamp(2.8rem, 10vw, 4.6rem);
+}
+.drawing-page--children .invitation {
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+.drawing-page--children .drawing-actions {
+  gap: 16px;
+  margin-top: 30px;
+}
+.drawing-page--children .primary-button,
+.drawing-page--children .secondary-button {
+  min-width: 8.5rem;
+  padding: 16px 22px;
+  font-size: 1.05rem;
+}
+.drawing-page--children .quiet-note {
+  margin-top: 18px;
+  font-size: .9rem;
+}
+.prompt-art--seizoen { background: #e6d7b8; }
+.prompt-art--jaarfeest { background: #ead9c8; }
+.prompt-symbol--seizoen { color: #8b5542; }
+.prompt-symbol--jaarfeest { color: #7a4f3a; }
 .secondary-button { padding: 13px 16px; background: transparent; color: #665c51; }
 .text-button { display: block; margin: 21px auto 0; background: transparent; color: #665c51; text-decoration: underline; text-underline-offset: 4px; font-size: .8rem; }
 .completion-mark { margin-bottom: 13px; color: #c77f57; font-family: Georgia, serif; font-size: 5rem; line-height: 1; }

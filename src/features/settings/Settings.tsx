@@ -51,7 +51,7 @@ export function Settings({ settings, audience, onSave, onReset, onBack }: Settin
         <label className="setting-row">
           <span>
             <strong>Voorleesknop</strong>
-            <small>Lees een tekenimpuls voor wanneer je dat wilt.</small>
+            <small>Alleen als je dat zelf wilt. Standaard uit.</small>
           </span>
           <input type="checkbox" name="readAloud" defaultChecked={settings.readAloud} />
         </label>

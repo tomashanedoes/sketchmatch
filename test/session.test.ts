@@ -10,16 +10,37 @@ import {
 } from '../src/features/game/session';
 
 test('returns categories for each intended audience', () => {
-  assert.deepEqual(getCategories('children'), ['dieren', 'lucht', 'natuur', 'thuis', 'vorm', 'water']);
-  assert.deepEqual(getCategories('adults'), ['landschap', 'natuur', 'thuis', 'vorm', 'water']);
+  assert.deepEqual(getCategories('children'), [
+    'dieren',
+    'jaarfeest',
+    'lucht',
+    'natuur',
+    'seizoen',
+    'thuis',
+    'vorm',
+    'water',
+  ]);
+  assert.deepEqual(getCategories('adults'), [
+    'jaarfeest',
+    'landschap',
+    'natuur',
+    'seizoen',
+    'thuis',
+    'vorm',
+    'water',
+  ]);
 });
 
 test('offers a broad prompt library for both audiences', () => {
   const children = prompts.filter((prompt) => prompt.audience === 'children' && prompt.active);
   const adults = prompts.filter((prompt) => prompt.audience === 'adults' && prompt.active);
+  const seasonal = prompts.filter((prompt) => prompt.category === 'seizoen' && prompt.active);
+  const festivals = prompts.filter((prompt) => prompt.category === 'jaarfeest' && prompt.active);
 
-  assert.ok(children.length >= 20);
-  assert.ok(adults.length >= 20);
+  assert.ok(children.length >= 30);
+  assert.ok(adults.length >= 30);
+  assert.ok(seasonal.length >= 8);
+  assert.ok(festivals.length >= 8);
 });
 
 test('never returns an excluded prompt while alternatives exist', () => {

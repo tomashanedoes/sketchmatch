@@ -11,7 +11,6 @@ import {
   isTimerFinished,
   pickNextPrompt,
   remainingTimerSeconds,
-  repeatPrompt,
   skipPrompt,
 } from './features/game/session';
 import { playSoftDoneSound, playSoftTimerSound } from './features/game/sound';
@@ -20,11 +19,9 @@ import { Settings } from './features/settings/Settings';
 import {
   createDefaultSettings,
   loadAudience,
-  loadFavorite,
   loadSettings,
   resetLocalData,
   saveAudience,
-  saveFavorite,
   saveSettings,
 } from './features/settings/storage';
 
@@ -35,7 +32,6 @@ export function App() {
   const [previousScreen, setPreviousScreen] = useState<Screen>('welcome');
   const [prompt, setPrompt] = useState<Prompt | null>(null);
   const [seen, setSeen] = useState<string[]>([]);
-  const [favoriteId, setFavoriteId] = useState<string | null>(() => loadFavorite());
   const [stats, setStats] = useState<SessionStats>(() => createSessionStats());
   const [sessionTimerMinutes, setSessionTimerMinutes] = useState(0);
   const [remainingSeconds, setRemainingSeconds] = useState<number | null>(null);
@@ -149,22 +145,6 @@ export function App() {
     window.speechSynthesis.speak(utterance);
   }
 
-  function handleToggleFavorite() {
-    if (!prompt) return;
-    const next = favoriteId === prompt.id ? null : prompt.id;
-    setFavoriteId(next);
-    saveFavorite(next);
-  }
-
-  function handleRepeatFavorite() {
-    if (!favoriteId) return;
-    const favorite = repeatPrompt(favoriteId);
-    if (!favorite || (audience && favorite.audience !== audience)) return;
-    setPrompt(favorite);
-    setSeen((current) => (current.includes(favorite.id) ? current : [...current, favorite.id]));
-    setScreen('round');
-  }
-
   function handleSaveSettings(next: AppSettings) {
     setSettings(next);
     setSeen([]);
@@ -176,7 +156,6 @@ export function App() {
     const defaults = createDefaultSettings();
     setSettings(defaults);
     setAudience(null);
-    setFavoriteId(null);
     saveSettings(defaults);
   }
 
@@ -213,13 +192,9 @@ export function App() {
         prompt={prompt}
         remainingSeconds={remainingSeconds}
         canReadAloud={canReadAloud}
-        isFavorite={favoriteId === prompt.id}
-        canRepeatFavorite={Boolean(favoriteId && favoriteId !== prompt.id)}
         onSkip={handleSkip}
         onDone={handleDone}
         onRead={handleRead}
-        onToggleFavorite={handleToggleFavorite}
-        onRepeatFavorite={handleRepeatFavorite}
         onSettings={openSettings}
         onChangeMode={() => setScreen('mode')}
       />

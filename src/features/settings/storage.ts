@@ -6,7 +6,7 @@ const AUDIENCE_KEY = 'tekenmoment-audience';
 const FAVORITE_KEY = 'tekenmoment-favorite';
 
 /** Bump when new default categories are added so existing installs unlock them. */
-export const PROMPT_CATALOG_VERSION = 3;
+export const PROMPT_CATALOG_VERSION = 4;
 
 const LEGACY_DEFAULT_CATEGORIES: Record<Audience, string[]> = {
   children: ['dieren', 'lucht', 'natuur'],
@@ -54,9 +54,13 @@ export function loadSettings(): AppSettings {
       | null;
     if (!stored) return defaults;
 
+    // Favorieten worden niet meer gebruikt; ruim oude sleutels op.
+    localStorage.removeItem(FAVORITE_KEY);
+
     const next: AppSettings = {
       ...defaults,
       ...stored,
+      readAloud: stored.readAloud ?? false,
       catalogVersion: PROMPT_CATALOG_VERSION,
       categories: {
         children: resolveCategories(
@@ -96,18 +100,6 @@ export function loadAudience(): Audience | null {
 
 export function saveAudience(audience: Audience): void {
   localStorage.setItem(AUDIENCE_KEY, audience);
-}
-
-export function loadFavorite(): string | null {
-  return localStorage.getItem(FAVORITE_KEY);
-}
-
-export function saveFavorite(id: string | null): void {
-  if (!id) {
-    localStorage.removeItem(FAVORITE_KEY);
-    return;
-  }
-  localStorage.setItem(FAVORITE_KEY, id);
 }
 
 export function resetLocalData(): void {
