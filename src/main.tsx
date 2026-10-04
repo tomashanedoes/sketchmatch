@@ -24,7 +24,11 @@ async function refreshServiceWorker() {
   const registrations = await navigator.serviceWorker.getRegistrations();
   await Promise.all(registrations.map((registration) => registration.unregister()));
 
-  await navigator.serviceWorker.register('/service-worker.js', { updateViaCache: 'none' });
+  const swUrl = `${import.meta.env.BASE_URL}service-worker.js`;
+  await navigator.serviceWorker.register(swUrl, {
+    updateViaCache: 'none',
+    scope: import.meta.env.BASE_URL,
+  });
 }
 
 window.addEventListener('load', () => {

@@ -61,7 +61,8 @@ const rasterShapes = [
 const rasterSet = new Set<string>(rasterShapes);
 
 export function PromptIllustration({ shape }: { shape: string }) {
-  const src = rasterSet.has(shape) ? `/illustrations/${shape}.png` : '/illustrations/circle.png';
+  const file = rasterSet.has(shape) ? `${shape}.png` : 'circle.png';
+  const src = `${import.meta.env.BASE_URL}illustrations/${file}`;
 
   return (
     <img
