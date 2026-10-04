@@ -18,7 +18,7 @@ export function Welcome({ lastAudienceLabel, onStart, onContinue, onSettings }: 
   return (
     <section className="welcome" aria-labelledby="welcome-title">
       <p className="version-banner">{APP_REVISION_LABEL}</p>
-      <p className="eyebrow">Een klein tekenmoment</p>
+      <p className="eyebrow">SketchMatch</p>
       <h1 id="welcome-title" tabIndex={-1} ref={headingRef}>
         Van kijken
         <br />

@@ -1,4 +1,4 @@
-# Tekenmoment (SketchMatch)
+# SketchMatch
 
 A calm, non-competitive Progressive Web App with drawing prompts for paper and pencil. Shaped with Waldorf / vrijeschool ideas in mind: your own pace, imagination, and the making itself — no scores, no leaderboards.
 
@@ -15,7 +15,7 @@ No app store. Open the live link, then add it to the home screen.
 1. Open [tomashanedoes.github.io/sketchmatch](https://tomashanedoes.github.io/sketchmatch/)
 2. Tap the browser menu (⋮)
 3. Choose **Install app** or **Add to Home screen**
-4. Confirm — Tekenmoment appears like a normal app icon
+4. Confirm — SketchMatch appears like a normal app icon
 
 ### iPhone / iPad (Safari)
 

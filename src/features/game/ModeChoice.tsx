@@ -21,7 +21,7 @@ export function ModeChoice({ onBack, onChoose }: ModeChoiceProps) {
       </button>
       <p className="eyebrow">Kies een verzameling</p>
       <h1 id="choose-title" tabIndex={-1} ref={headingRef}>
-        Voor wie is dit tekenmoment?
+        Voor wie is SketchMatch?
       </h1>
       <div className="audience-grid">
         {(Object.keys(audiences) as Audience[]).map((key) => {

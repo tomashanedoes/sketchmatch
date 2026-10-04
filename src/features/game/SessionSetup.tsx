@@ -48,7 +48,7 @@ export function SessionSetup({ timerMinutes, onChangeTimer, onStart, onBack }: S
         ))}
       </div>
       <button className="primary-button" type="button" onClick={onStart}>
-        Start tekenmoment
+        Start SketchMatch
       </button>
     </section>
   );

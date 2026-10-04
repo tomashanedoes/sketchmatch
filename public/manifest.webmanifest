@@ -1,6 +1,6 @@
 {
-  "name": "Tekenmoment",
-  "short_name": "Tekenmoment",
+    "name": "SketchMatch",
+    "short_name": "SketchMatch",
   "description": "Rustige tekenimpulsen voor op papier.",
   "lang": "nl",
   "start_url": "./",
